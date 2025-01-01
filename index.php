@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,47 +8,48 @@
     <title>Document</title>
 </head>
 <body>
-<div class="container">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Status</th>
-                    <th>Created_at</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                include("connect.php");
-                $sql="SELECT * FROM tasks";
-                $result=mysqli_query($conn,$sql);
-                if (mysqli_num_rows($result)>0) {
-                    while ($row=mysqli_fetch_array($result)) {
-                        ?>
-                        <tr>
-                            <td><?php echo $row['id'];?></td>
-                            <td><?php echo $row['title'];?></td>
-                            <td><?php echo $row['description'];?></td>
-                            <td><?php echo $row['status'];?></td>
-                            <td><?php echo $row['created_at'];?></td>
-                            <td>
-                            <a href="view.php?id=<?php echo $row['id']; ?>" class="btn btn-info">View More</a>
-                            <a href="edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning">edit</a>
-                            <a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">Delete</a>
-                            </td>
-                        </tr>
-                        <?php
-                    }
-                }
-                
-                ?>
-            </tbody>
-            
-
-        </table>
+<div class="container my-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Task List</h1>
+        <a href="add.php" class="btn btn-primary">Add Task</a>
     </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Created_at</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            include("connect.php");
+            $sql="SELECT * FROM tasks";
+            $result=mysqli_query($conn,$sql);
+            if (mysqli_num_rows($result)>0) {
+                while ($row=mysqli_fetch_array($result)) {
+                    ?>
+                    <tr>
+                        <td><?php echo $row['id'];?></td>
+                        <td><?php echo $row['title'];?></td>
+                        <td><?php echo $row['description'];?></td>
+                        <td><?php echo $row['status'];?></td>
+                        <td><?php echo $row['created_at'];?></td>
+                        <td>
+                        <a href="view.php?id=<?php echo $row['id']; ?>" class="btn btn-info">View More</a>
+                        <a href="edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning">edit</a>
+                        <a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    <?php
+                }
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

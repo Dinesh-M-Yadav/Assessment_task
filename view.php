@@ -31,6 +31,9 @@
                 <?Php
             }
             ?>
+            <footer class="text-center mt-4">
+            <a href="index.php" class="btn btn-secondary">Return to Task List</a>
+          </footer>
         </div>
     </div>
 </body>
